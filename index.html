@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mi Tienda</title>
+<style>
+body{font-family:Arial;background:#f4f4f4;padding:20px}
+.caja{background:white;padding:20px;border-radius:10px;max-width:500px;margin:auto}
+input,button{width:100%;padding:10px;margin:5px 0}
+button{background:green;color:white;border:none;font-weight:bold}
+table{width:100%;margin-top:10px;border-collapse:collapse}
+td,th{border:1px solid #ccc;padding:5px}
+.total{font-weight:bold;color:green;margin-top:10px;font-size:18px}
+</style>
+</head>
+<body>
+<div class="caja">
+<h2>Mi Tienda Ventas</h2>
+<input id="prod" placeholder="Producto">
+<input id="prec" type="number" placeholder="Precio">
+<input id="cant" type="number" placeholder="Cantidad">
+<button onclick="agregar()">Agregar Venta</button>
+<table id="tabla"><tr><th>Prod</th><th>Precio</th><th>Cant</th><th>Total</th></tr></table>
+<div class="total" id="total">Total: S/ 0</div>
+</div>
+<script>
+let tot=0;
+function agregar(){
+let p=document.getElementById('prod').value;
+let pr=parseFloat(document.getElementById('prec').value);
+let c=parseFloat(document.getElementById('cant').value);
+if(!p||!pr||!c)return;
+let s=pr*c; tot+=s;
+document.getElementById('tabla').innerHTML+=`<tr><td>${p}</td><td>${pr}</td><td>${c}</td><td>${s}</td></tr>`;
+document.getElementById('total').innerText='Total: S/ '+tot;
+document.getElementById('prod').value='';document.getElementById('prec').value='';document.getElementById('cant').value='';
+}
+</script>
+</body>
+</html>
